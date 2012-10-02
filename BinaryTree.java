@@ -1,4 +1,4 @@
-package starting;
+package solutions;
 
 import java.util.List;
 
@@ -40,4 +40,12 @@ public interface BinaryTree<E> {
 	 * @return The pre-order list of elements.
 	 */
 	public List<E> getPreOrder();
+
+	
+	/**
+	 * visit method 
+	 * @return returns an object
+	 */
+	public Object accept(BinaryTreeVisitor<E> visitor);
+
 }

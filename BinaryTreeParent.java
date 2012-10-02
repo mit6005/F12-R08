@@ -1,4 +1,4 @@
-package starting;
+package solutions;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -31,7 +31,9 @@ public class BinaryTreeParent<E> implements BinaryTree<E> {
         this.left = left;
     }
 
-    @Override
+   
+
+	@Override
 	/** @see BinaryTree#getValue() */
     public E getValue() {
         return value;
@@ -70,4 +72,12 @@ public class BinaryTreeParent<E> implements BinaryTree<E> {
 
 		return preOrder;
 	}
+
+
+	@Override
+	public Object accept(BinaryTreeVisitor<E> visitor) {
+		return visitor.visit(this);
+	}
+	
+	
 }
