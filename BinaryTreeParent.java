@@ -73,11 +73,19 @@ public class BinaryTreeParent<E> implements BinaryTree<E> {
 		return preOrder;
 	}
 
+	@Override
+	public String toString() {
+		String left = this.getLeft().toString();
+		String right = this.getRight().toString();
+		String value = this.getValue().toString();
+		return "( "+left +" "+value + " "+right+" )";
+	}
 
 	@Override
-	public Object accept(BinaryTreeVisitor<E> visitor) {
+	public <R>R accept(BinaryTreeVisitor<E,R> visitor) {
 		return visitor.visit(this);
 	}
+	
 	
 	
 }

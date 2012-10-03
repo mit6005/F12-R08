@@ -1,9 +1,9 @@
 package solutions;
 
-public class AddTreeVisitor<E> implements BinaryTreeVisitor<E> {
+public class AddTreeVisitor<E> implements BinaryTreeVisitor<E,Integer> {
 
 	@Override
-	public Object visit(BinaryTreeLeaf<E> o) {
+	public Integer visit(BinaryTreeLeaf<E> o) {
 		String str = o.getValue().toString();
 		Integer intValue = Integer.valueOf(str);
 		System.out.print(" "+intValue
@@ -12,14 +12,14 @@ public class AddTreeVisitor<E> implements BinaryTreeVisitor<E> {
 	}
 
 	@Override
-	public Object visit(BinaryTreeParent<E> o) {
+	public Integer visit(BinaryTreeParent<E> o) {
 
 		System.out.print("(");
-		Integer leftVal = (Integer) this.visit(o.getLeft());
+		Integer leftVal = o.getLeft().accept(this);
 
 		String value = o.getValue().toString();
 		System.out.print(" "+value +" ");
-		Integer rightVal = (Integer) this.visit(o.getRight());
+		Integer rightVal = o.getRight().accept(this);
 		System.out.print(")");
 		Integer retVal =0;
 		if(value.trim().equals("+"))
@@ -31,16 +31,6 @@ public class AddTreeVisitor<E> implements BinaryTreeVisitor<E> {
 			retVal = leftVal - rightVal;
 		}
 		return retVal;
-	}
-
-	@Override
-	public Object visit(BinaryTree<E> o) {
-		String value = o.getValue().toString();
-		//depending on a trait of tokens, decide which one is it. 
-		if(value.trim().equals("+")||value.trim().equals("-"))
-			return this.visit((BinaryTreeParent<E>) o);
-		else 
-			return this.visit((BinaryTreeLeaf<E>) o);
 	}
 
 }

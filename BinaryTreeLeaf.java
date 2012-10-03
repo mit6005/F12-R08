@@ -67,7 +67,7 @@ public class BinaryTreeLeaf<E> implements BinaryTree<E> {
 
 
 	@Override
-	public Object accept(BinaryTreeVisitor<E> visitor) {
+	public <R>R accept(BinaryTreeVisitor<E,R> visitor) {
 		return visitor.visit(this);
 	}
 

@@ -46,6 +46,6 @@ public interface BinaryTree<E> {
 	 * visit method 
 	 * @return returns an object
 	 */
-	public Object accept(BinaryTreeVisitor<E> visitor);
+	public <R>R accept(BinaryTreeVisitor<E,R> visitor);
 
 }
